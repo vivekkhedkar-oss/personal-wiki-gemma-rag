@@ -1,0 +1,48 @@
+[mode: chat | execution: local | model: gemma4:e2b]
+Wiki Buddy here. Commands: /help  /save (save last reply as a draft in memory/)  /quit. Otherwise just talk.
+
+you> you> what can you help me with?
+
+buddy> Hey there. I'm Wiki Buddy, here to help you sort things out.
+
+I can brainstorm ideas, draft things, plan projects, and work through concepts. I also remember our recent chat so we can follow up on things later.
+
+Just tell me what you want to work on. For example, you could ask me to brainstorm a topic, draft an email, or plan out a task. Or you can type /help if you want to see my full list of commands.
+  [notes consulted: none | 23.9 s]
+
+you> you> Give me a 3-step plan for studying for a networks exam.
+
+buddy> That sounds like something I can help with! Planning is my specialty.
+
+Here is a suggested 3-step plan for studying for a networks exam:
+
+1.  **Understand the Core Concepts (The Foundation):** Start by reviewing your course materials. Focus on understanding the fundamental concepts like OSI/TCP-IP models, IP addressing, subnetting, routing protocols, and basic network devices. Don't just memorize; try to understand *why* things work the way they do.
+2.  **Practice, Practice, Practice (Application):** Move into hands-on practice. Work through example problems, draw network diagrams, and use practice exams. This is where you test your knowledge and see where your weak spots are.
+3.  **Review and Consolidate (Refinement):** Go back over the areas where you struggled in step two. Create flashcards for definitions, review your notes on complex topics, and do a final mock exam under timed conditions.
+
+How does that sound? We can dive into any of these steps and flesh out the details if you like.
+  [notes consulted: none | 30.9 s]
+
+you> you> make that shorter
+
+buddy> No problem, let's trim that down.
+
+Here is a shorter 3-step plan for studying:
+
+1.  **Learn the Basics:** Focus on core concepts like OSI, IP addressing, and routing.
+2.  **Practice Problems:** Work through examples and practice exams to apply what you've learned.
+3.  **Review & Test:** Go back over weak areas and take a final mock exam.
+
+That should give you a solid structure. What part should we focus on first?
+  [notes consulted: none | 13.1 s]
+
+you> you> For this chat, my favorite color is teal and my cat is named Pixel.
+
+buddy> Got it. I've noted that your favorite color is teal and your cat's name is Pixel. I'll keep that in mind for our future chats.
+
+What's next on your mind?
+  [notes consulted: none | 6.3 s]
+
+you> saved draft: C:\Users\khedu\OneDrive\Documents\Claude Code\personal-wiki\memory\draft-20260929-155358.md
+
+you> 

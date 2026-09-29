@@ -1,0 +1,23 @@
+{
+  "a3fbecf0c5": {
+    "source": "vault/raw/obsidian-vault-practices.md",
+    "page": "vault/wiki/Practices/Obsidian Vault Practices.md",
+    "title": "Obsidian Vault Practices",
+    "sha256": "fa8e0734e1f850f046a0a1d4c400d6c8f0537d16c3ad08038bc2a1781c09317d",
+    "seconds": 40.3
+  },
+  "0dbd301dc1": {
+    "source": "vault/raw/rag-notes.md",
+    "page": "vault/wiki/Concepts/Retrieval Augmented Generation.md",
+    "title": "Retrieval Augmented Generation",
+    "sha256": "4a8266e45f1c145d96575c1692e82ce0f6a2b44017c81ab118e142065ba27027",
+    "seconds": 36.9
+  },
+  "34c5e2649c": {
+    "source": "vault/raw/running-gemma-locally.md",
+    "page": "vault/wiki/Tools/Running Gemma Locally.md",
+    "title": "Running Gemma Locally",
+    "sha256": "257f695740f522c70ff87dc74f33e4ac26fb756ec454c2f3dd38ddf1206fbb76",
+    "seconds": 47.0
+  }
+}

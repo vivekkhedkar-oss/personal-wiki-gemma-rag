@@ -1,0 +1,8 @@
+[mode: ask | execution: local | model: gemma4:e2b]
+
+Retrieved: [1] vault/raw/obsidian-vault-practices.md § Note names
+
+Answer:
+INSUFFICIENT EVIDENCE: the sources do not contain information about the name of the cat.
+
+Citations: cited=[] invalid=[] ok=True  (13.1 s)

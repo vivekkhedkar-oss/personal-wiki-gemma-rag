@@ -1,0 +1,7 @@
+[mode: search | execution: local | no model used]
+
+[1] vault/raw/obsidian-vault-practices.md  (section: Graph view; score 5.964; matched: filter, graph)
+    To see only curated notes, filter the graph with the path filter wiki/ and turn off the Attachments toggle. Zoom in until the labels are readable.
+
+[2] vault/raw/obsidian-vault-practices.md  (section: Obsidian Vault Practices; score 2.761; matched: obsidian)
+    *Sample source written for this assignment.*

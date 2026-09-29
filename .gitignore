@@ -1,0 +1,6 @@
+__pycache__/
+memory/
+*.gguf
+vault/.obsidian/workspace*.json
+evidence/rehearsal-online/
+evidence/ask/rehearsal-*

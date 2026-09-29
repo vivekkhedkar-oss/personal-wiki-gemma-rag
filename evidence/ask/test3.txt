@@ -1,0 +1,8 @@
+[mode: ask | execution: local | model: gemma4:e2b]
+
+Retrieved: [1] vault/raw/obsidian-vault-practices.md § Graph view, [2] vault/raw/obsidian-vault-practices.md § Note names, [3] vault/raw/obsidian-vault-practices.md § Vault layout
+
+Answer:
+To see only curated notes, filter the graph with the path filter wiki/ and turn off the Attachments toggle, and zoom in until the labels are readable [1]. Notes should be named for their subject in two to six words, such as Retrieval Augmented Generation, and never use hashes, timestamps, or full sentences as filenames because the filename is the label shown in the graph view [2].
+
+Citations: cited=[1, 2] invalid=[] ok=True  (23.1 s)

@@ -1,0 +1,104 @@
+[
+ {
+  "id": "obsidian-vault-practices#0",
+  "source": "vault/raw/obsidian-vault-practices.md",
+  "section": "Obsidian Vault Practices",
+  "text": "*Sample source written for this assignment.*"
+ },
+ {
+  "id": "obsidian-vault-practices#1",
+  "source": "vault/raw/obsidian-vault-practices.md",
+  "section": "Vault layout",
+  "text": "Open the vault folder itself in Obsidian, not the whole code repository. Keep untouched originals in raw/, reviewed notes in wiki/, and a human landing page called index.md at the vault root."
+ },
+ {
+  "id": "obsidian-vault-practices#2",
+  "source": "vault/raw/obsidian-vault-practices.md",
+  "section": "Note names",
+  "text": "Name notes for their subject in two to six words, such as Retrieval Augmented Generation. Never use hashes, timestamps, or full sentences as filenames, because the filename is the label shown in the graph view."
+ },
+ {
+  "id": "obsidian-vault-practices#3",
+  "source": "vault/raw/obsidian-vault-practices.md",
+  "section": "Links",
+  "text": "Use internal links in double brackets to connect related notes, and say why the link matters. Do not link unrelated notes just to make the graph look busy. The backlinks pane shows which notes point to the current one."
+ },
+ {
+  "id": "obsidian-vault-practices#4",
+  "source": "vault/raw/obsidian-vault-practices.md",
+  "section": "Graph view",
+  "text": "To see only curated notes, filter the graph with the path filter wiki/ and turn off the Attachments toggle. Zoom in until the labels are readable."
+ },
+ {
+  "id": "obsidian-vault-practices#5",
+  "source": "vault/raw/obsidian-vault-practices.md",
+  "section": "Properties",
+  "text": "Machine identifiers and original filenames belong in note properties (front matter), for example a source property that points back to the file in raw/."
+ },
+ {
+  "id": "rag-notes#0",
+  "source": "vault/raw/rag-notes.md",
+  "section": "Retrieval Augmented Generation Notes",
+  "text": "*Sample source written for this assignment.*"
+ },
+ {
+  "id": "rag-notes#1",
+  "source": "vault/raw/rag-notes.md",
+  "section": "What RAG does",
+  "text": "Retrieval Augmented Generation (RAG) supplies a language model with relevant passages at answer time. The model is not retrained. The program searches a local index, pastes the best passages into the prompt, and asks the model to answer using only that evidence."
+ },
+ {
+  "id": "rag-notes#2",
+  "source": "vault/raw/rag-notes.md",
+  "section": "Chunking",
+  "text": "Documents are split into passages of about 800 characters, cut at heading and paragraph boundaries. Each passage keeps its source path and section heading so a citation can point back to the original file."
+ },
+ {
+  "id": "rag-notes#3",
+  "source": "vault/raw/rag-notes.md",
+  "section": "Retrieval methods",
+  "text": "Keyword search with BM25 needs no extra model and works offline. Embedding search finds paraphrases better but needs a local embedding model. In my setup I chose BM25 first because it is easy to debug: when a wrong passage appears, the matching words explain why."
+ },
+ {
+  "id": "rag-notes#4",
+  "source": "vault/raw/rag-notes.md",
+  "section": "Citations and missing evidence",
+  "text": "Every claim in an answer should carry a citation such as [1] that maps to a retrieved passage. If no passage supports the question, the assistant must say the evidence is insufficient instead of guessing. A fluent answer with no supporting passage counts as a failure."
+ },
+ {
+  "id": "running-gemma-locally#0",
+  "source": "vault/raw/running-gemma-locally.md",
+  "section": "Running Gemma Locally",
+  "text": "*Sample source written for this assignment.*"
+ },
+ {
+  "id": "running-gemma-locally#1",
+  "source": "vault/raw/running-gemma-locally.md",
+  "section": "Model sizes",
+  "text": "Gemma comes in several open-weight sizes. E2B needs roughly 2.9 GB to load at Q4_0 quantization, E4B needs roughly 4.5 GB, and the 26B A4B mixture-of-experts model needs roughly 14.4 GB because all 26B weights must be loaded even though only about 4B are active per token."
+ },
+ {
+  "id": "running-gemma-locally#2",
+  "source": "vault/raw/running-gemma-locally.md",
+  "section": "My laptop",
+  "text": "My laptop has an AMD Ryzen 5 7520U CPU, 16 GB of RAM, and no dedicated GPU. Because there is no discrete VRAM, everything runs on the CPU, so I picked the smallest model that works: Gemma E2B served through Ollama."
+ },
+ {
+  "id": "running-gemma-locally#3",
+  "source": "vault/raw/running-gemma-locally.md",
+  "section": "Quantization",
+  "text": "Quantization stores weights in fewer bits, for example 4 bits, to cut memory use. The trade-off is a small loss of answer quality. The model I run uses Q4_K_M quantization."
+ },
+ {
+  "id": "running-gemma-locally#4",
+  "source": "vault/raw/running-gemma-locally.md",
+  "section": "Speed expectations",
+  "text": "On CPU only, the first request is slow because the model must be loaded into memory, which took over twenty seconds. Later requests reuse the loaded model and answer in a few seconds for short replies."
+ },
+ {
+  "id": "running-gemma-locally#5",
+  "source": "vault/raw/running-gemma-locally.md",
+  "section": "Offline use",
+  "text": "Weights are downloaded once while online with the command `ollama pull`. After that, the model runs with the internet disconnected, because Ollama serves it from localhost on port 11434."
+ }
+]

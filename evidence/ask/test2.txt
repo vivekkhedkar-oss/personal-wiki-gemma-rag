@@ -1,0 +1,8 @@
+[mode: ask | execution: local | model: gemma4:e2b]
+
+Retrieved: [1] vault/raw/running-gemma-locally.md § My laptop, [2] vault/raw/rag-notes.md § What RAG does, [3] vault/raw/running-gemma-locally.md § Speed expectations
+
+Answer:
+Because there is no discrete VRAM, everything runs on the CPU, so the smallest model that works was picked: Gemma E2B served through Ollama [1].
+
+Citations: cited=[1] invalid=[] ok=True  (18.9 s)

@@ -1,0 +1,55 @@
+{
+  "mode": "ask",
+  "execution": "local",
+  "model": "gemma4:e2b",
+  "time": "2026-09-29T15:51:10",
+  "question": "Why did I pick the smallest model for my laptop?",
+  "retrieved": [
+    {
+      "id": "running-gemma-locally#2",
+      "source": "vault/raw/running-gemma-locally.md",
+      "section": "My laptop",
+      "text": "My laptop has an AMD Ryzen 5 7520U CPU, 16 GB of RAM, and no dedicated GPU. Because there is no discrete VRAM, everything runs on the CPU, so I picked the smallest model that works: Gemma E2B served through Ollama.",
+      "score": 8.723,
+      "matched": [
+        "laptop",
+        "model",
+        "pick",
+        "smallest"
+      ],
+      "coverage": 0.8
+    },
+    {
+      "id": "rag-notes#1",
+      "source": "vault/raw/rag-notes.md",
+      "section": "What RAG does",
+      "text": "Retrieval Augmented Generation (RAG) supplies a language model with relevant passages at answer time. The model is not retrained. The program searches a local index, pastes the best passages into the prompt, and asks the model to answer using only that evidence.",
+      "score": 1.315,
+      "matched": [
+        "model"
+      ],
+      "coverage": 0.2
+    },
+    {
+      "id": "running-gemma-locally#4",
+      "source": "vault/raw/running-gemma-locally.md",
+      "section": "Speed expectations",
+      "text": "On CPU only, the first request is slow because the model must be loaded into memory, which took over twenty seconds. Later requests reuse the loaded model and answer in a few seconds for short replies.",
+      "score": 1.162,
+      "matched": [
+        "model"
+      ],
+      "coverage": 0.2
+    }
+  ],
+  "answer": "Because there is no discrete VRAM, everything runs on the CPU, so the smallest model that works was picked: Gemma E2B served through Ollama [1].",
+  "citation_check": {
+    "cited": [
+      1
+    ],
+    "invalid": [],
+    "insufficient": false,
+    "ok": true
+  },
+  "seconds": 18.9
+}
