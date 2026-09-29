@@ -10,6 +10,7 @@ $ErrorActionPreference = "Continue"
 $root = Split-Path -Parent $PSScriptRoot
 Set-Location $root
 [Console]::OutputEncoding = [Text.Encoding]::UTF8
+$OutputEncoding = New-Object Text.UTF8Encoding $false   # no BOM on text piped into python's stdin
 $env:PYTHONIOENCODING = "utf-8"
 $outDir = if ($Rehearsal) { "evidence\rehearsal-online" } else { "evidence\offline" }
 $labelPrefix = if ($Rehearsal) { "rehearsal" } else { "offline" }

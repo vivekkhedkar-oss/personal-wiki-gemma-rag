@@ -62,7 +62,7 @@ def cmd_chat(a):
     chat = harness.Chat(model=a.model)
     while True:
         try:
-            msg = input("\nyou> ").strip()
+            msg = input("\nyou> ").lstrip("﻿").strip()
         except EOFError:
             break
         if not msg:
