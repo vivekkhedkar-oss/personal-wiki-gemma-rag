@@ -1,0 +1,303 @@
+﻿**********************
+Windows PowerShell transcript start
+Start time: 20260929165336
+Username: VIVEK\khedu
+RunAs User: VIVEK\khedu
+Configuration Name: 
+Machine: VIVEK (Microsoft Windows NT 10.0.26200.0)
+Host Application: powershell -NoProfile -ExecutionPolicy Bypass -File C:\Users\khedu\OneDrive\Documents\Claude Code\personal-wiki\scripts\offline-demo.ps1
+Process ID: 32320
+PSVersion: 5.1.26100.9444
+PSEdition: Desktop
+PSCompatibleVersions: 1.0, 2.0, 3.0, 4.0, 5.0, 5.1.26100.9444
+BuildVersion: 10.0.26100.9444
+CLRVersion: 4.0.30319.42000
+WSManStackVersion: 3.0
+PSRemotingProtocolVersion: 2.3
+SerializationVersion: 1.1.0.1
+**********************
+PS>TerminatingError(Invoke-WebRequest): "The remote name could not be resolved: 'www.msftconnecttest.com'"
+checked at: 2026-09-29T16:53:39
+HTTP GET http://www.msftconnecttest.com/connecttest.txt succeeded: False
+ping 8.8.8.8 succeeded: False
+=> online: False
+
+
+Name  InterfaceDescription                           Status      
+----  --------------------                           ------      
+Wi-Fi Realtek RTL8852BE WiFi 6 802.11ax PCIe Adapter Disconnected
+  OFFLINE confirmed. Starting. Do not reconnect yet.
+
+==========================================================================
+  Restarting Ollama (local model server on 127.0.0.1:11434)
+==========================================================================
+PS>TerminatingError(Invoke-RestMethod): "The operation has timed out."
+Ollama running locally: True
+OS: Microsoft Windows 11 Home 10.0.26200
+CPU: AMD Ryzen 5 7520U with Radeon Graphics
+RAM total: 15.2 GB, free before model load: 1.5 GB
+Python: Python 3.14.7
+Ollama: ollama version is 0.34.3
+Ollama restarted for this run: True
+  Model
+    architecture        gemma4    
+    parameters          5.1B      
+    context length      131072    
+    embedding length    1536      
+    quantization        Q4_K_M    
+    requires            0.20.0
+
+==========================================================================
+  Step 1 of 10 - Help  (expected: 1 s)
+==========================================================================
+  > python wiki.py --help
+  working... (the model may be silent for 20-60 s at a time; this is normal)
+usage: wiki [-h] [--model MODEL] [--mode {local}] {ingest,search,ask,chat} ...
+
+wiki: personal wiki CLI. Modes: chat (assistant), ask (grounded answer), search (raw passages), ingest.
+
+positional arguments:
+  {ingest,search,ask,chat}
+    ingest              raw sources -> wiki pages + index
+    search              show original passages, no generated answer
+    ask                 standalone grounded answer with citations
+    chat                personal assistant
+
+options:
+  -h, --help            show this help message and exit
+  --model MODEL         local Ollama model tag
+  --mode {local}        execution setting (local only)
+
+examples:
+  python wiki.py ingest                      read vault/raw, generate wiki pages, rebuild index
+  python wiki.py search "workshop location"  show original passages (no model needed)
+  python wiki.py ask "Where is the workshop?"  standalone cited answer from local Gemma
+  python wiki.py chat                        assistant with conversation memory (/help inside)
+configuration: --model (default gemma4:e2b via local Ollama), --mode local (default; only local is implemented).
+inputs: original sources (.md/.txt/.pdf) in vault/raw/. Ollama must be running for ingest/ask/chat.
+  -> saved evidence\offline\01-help.txt  (exit code 0, 0.5 s)
+PS>TerminatingError(Invoke-WebRequest): "The remote name could not be resolved: 'www.msftconnecttest.com'"
+
+==========================================================================
+  Step 2 of 10 - Ingest 3 sources with local Gemma  (expected: about 2.5 min)
+==========================================================================
+  > python wiki.py ingest --force
+  working... (the model may be silent for 20-60 s at a time; this is normal)
+[mode: ingest | execution: local | model: gemma4:e2b]
+  ingesting  vault/raw/obsidian-vault-practices.md with gemma4:e2b ...
+    -> vault/wiki/Practices/Obsidian Vault Practices.md (63.0 s)
+  ingesting  vault/raw/rag-notes.md with gemma4:e2b ...
+    -> vault/wiki/Concepts/Retrieval Augmented Generation.md (39.9 s)
+  ingesting  vault/raw/running-gemma-locally.md with gemma4:e2b ...
+    -> vault/wiki/Tools/Running Gemma Locally.md (49.5 s)
+  retrieval index rebuilt: 17 passages. total 152.6 s
+  -> saved evidence\offline\02-ingest-model.txt  (exit code 0, 153 s)
+PS>TerminatingError(Invoke-WebRequest): "The remote name could not be resolved: 'www.msftconnecttest.com'"
+
+==========================================================================
+  Step 3 of 10 - Re-ingest real vault (expect no duplicates)  (expected: 1 s)
+==========================================================================
+  > python wiki.py ingest
+  working... (the model may be silent for 20-60 s at a time; this is normal)
+[mode: ingest | execution: local | model: gemma4:e2b]
+  unchanged  vault/raw/obsidian-vault-practices.md -> vault/wiki/Practices/Obsidian Vault Practices.md (kept, no model call)
+  unchanged  vault/raw/rag-notes.md -> vault/wiki/Concepts/Retrieval Augmented Generation.md (kept, no model call)
+  unchanged  vault/raw/running-gemma-locally.md -> vault/wiki/Tools/Running Gemma Locally.md (kept, no model call)
+  retrieval index rebuilt: 17 passages. total 0.0 s
+  -> saved evidence\offline\03-reingest.txt  (exit code 0, 0.5 s)
+PS>TerminatingError(Invoke-WebRequest): "The remote name could not be resolved: 'www.msftconnecttest.com'"
+
+==========================================================================
+  Step 4 of 10 - Ask test 1 (direct)  (expected: about 25 s)
+==========================================================================
+  > python wiki.py ask How much memory does the E4B Gemma model need to load at Q4_0? --label offline-test1
+  working... (the model may be silent for 20-60 s at a time; this is normal)
+[mode: ask | execution: local | model: gemma4:e2b]
+
+Retrieved: [1] vault/raw/running-gemma-locally.md § Model sizes, [2] vault/raw/running-gemma-locally.md § Speed expectations, [3] vault/raw/running-gemma-locally.md § Quantization
+
+Answer:
+E4B needs roughly 4.5 GB to load at Q4_0 quantization [1].
+
+Citations: cited=[1] invalid=[] ok=True  (22.3 s)
+  -> saved evidence\offline\04-ask-test1.txt  (exit code 0, 22.8 s)
+PS>TerminatingError(Invoke-WebRequest): "The remote name could not be resolved: 'www.msftconnecttest.com'"
+
+==========================================================================
+  Step 5 of 10 - Ask test 2 (paraphrase)  (expected: about 25 s)
+==========================================================================
+  > python wiki.py ask Why did I pick the smallest model for my laptop? --label offline-test2
+  working... (the model may be silent for 20-60 s at a time; this is normal)
+[mode: ask | execution: local | model: gemma4:e2b]
+
+Retrieved: [1] vault/raw/running-gemma-locally.md § My laptop, [2] vault/raw/rag-notes.md § What RAG does, [3] vault/raw/running-gemma-locally.md § Speed expectations
+
+Answer:
+Because there is no discrete VRAM, everything runs on the CPU, so the smallest model that works was picked: Gemma E2B served through Ollama [1].
+
+Citations: cited=[1] invalid=[] ok=True  (22.9 s)
+  -> saved evidence\offline\05-ask-test2.txt  (exit code 0, 23.5 s)
+PS>TerminatingError(Invoke-WebRequest): "The remote name could not be resolved: 'www.msftconnecttest.com'"
+
+==========================================================================
+  Step 6 of 10 - Ask test 3 (two facts)  (expected: about 30 s)
+==========================================================================
+  > python wiki.py ask How do I keep the Obsidian graph readable and what should notes be named? --label offline-test3
+  working... (the model may be silent for 20-60 s at a time; this is normal)
+[mode: ask | execution: local | model: gemma4:e2b]
+
+Retrieved: [1] vault/raw/obsidian-vault-practices.md § Graph view, [2] vault/raw/obsidian-vault-practices.md § Note names, [3] vault/raw/obsidian-vault-practices.md § Vault layout
+
+Answer:
+To see only curated notes, filter the graph with the path filter wiki/ and turn off the Attachments toggle, and then zoom in until the labels are readable [1]. Notes should be named for their subject in two to six words, such as Retrieval Augmented Generation, and never use hashes, timestamps, or full sentences as filenames because the filename is the label shown in the graph view [2].
+
+Citations: cited=[1, 2] invalid=[] ok=True  (28.8 s)
+  -> saved evidence\offline\06-ask-test3.txt  (exit code 0, 29.3 s)
+PS>TerminatingError(Invoke-WebRequest): "The remote name could not be resolved: 'www.msftconnecttest.com'"
+
+==========================================================================
+  Step 7 of 10 - Ask test 4 (unsupported)  (expected: about 25 s)
+==========================================================================
+  > python wiki.py ask What does the hosted Gemma API cost per million tokens? --label offline-test4
+  working... (the model may be silent for 20-60 s at a time; this is normal)
+[mode: ask | execution: local | model: gemma4:e2b]
+
+Retrieved: [1] vault/raw/running-gemma-locally.md § Model sizes, [2] vault/raw/running-gemma-locally.md § Running Gemma Locally, [3] vault/raw/running-gemma-locally.md § My laptop
+
+Answer:
+INSUFFICIENT EVIDENCE: the sources do not state the cost per million tokens for the hosted Gemma API.
+
+Citations: cited=[] invalid=[] ok=True  (21.3 s)
+  -> saved evidence\offline\07-ask-test4.txt  (exit code 0, 21.8 s)
+PS>TerminatingError(Invoke-WebRequest): "The remote name could not be resolved: 'www.msftconnecttest.com'"
+
+==========================================================================
+  Step 8 of 10 - Search check (no model)  (expected: 1 s)
+==========================================================================
+  > python wiki.py search Obsidian graph filter
+  working... (the model may be silent for 20-60 s at a time; this is normal)
+[mode: search | execution: local | no model used]
+
+[1] vault/raw/obsidian-vault-practices.md  (section: Graph view; score 5.964; matched: filter, graph)
+    To see only curated notes, filter the graph with the path filter wiki/ and turn off the Attachments toggle. Zoom in until the labels are readable.
+
+[2] vault/raw/obsidian-vault-practices.md  (section: Obsidian Vault Practices; score 2.761; matched: obsidian)
+    *Sample source written for this assignment.*
+
+[3] vault/raw/obsidian-vault-practices.md  (section: Vault layout; score 1.908; matched: obsidian)
+    Open the vault folder itself in Obsidian, not the whole code repository. Keep untouched originals in raw/, reviewed notes in wiki/, and a human landing page called index.md at the vault root.
+
+[4] vault/raw/obsidian-vault-practices.md  (section: Note names; score 1.583; matched: graph)
+    Name notes for their subject in two to six words, such as Retrieval Augmented Generation. Never use hashes, timestamps, or full sentences as filenames, because the filename is the label shown in the graph view.
+  -> saved evidence\offline\08-search.txt  (exit code 0, 0.5 s)
+PS>TerminatingError(Invoke-WebRequest): "The remote name could not be resolved: 'www.msftconnecttest.com'"
+
+==========================================================================
+  Step 9 of 10 - Chat check  (expected: about 1.5 min)
+==========================================================================
+  > python wiki.py chat
+  working... (the model may be silent for 20-60 s at a time; this is normal)
+[mode: chat | execution: local | model: gemma4:e2b]
+Wiki Buddy here. Commands: /help  /save (save last reply as a draft in memory/)  /quit. Otherwise just talk.
+
+you> what can we do?
+
+buddy> Hey there! I'm Wiki Buddy. I can help you brainstorm, draft, plan, and work through ideas. I can also look up notes you've saved in your personal wiki when you need them.
+
+Just tell me what's on your mind. For example, you can ask me to:
+
+*   Brainstorm some ideas for a project.
+*   Draft an email or a short story.
+*   Plan out a schedule.
+
+Or you can type `/help` if you want to see a list of commands. What would you like to start with?
+  [notes consulted: none | 30.2 s]
+
+you> what can you help me with?
+
+buddy> I can help you with a few things. I can brainstorm, draft, plan, and work through ideas. I can also look up passages from your personal notes if you've saved anything.
+
+Think of me as your personal thinking partner.
+
+To get started, you could ask me to:
+
+1.  **Brainstorm:** Come up with ideas for anything.
+2.  **Draft:** Help you write things, like emails or outlines.
+3.  **Plan:** Help you organize steps or schedules.
+
+Just give me a topic or a task, and we can get started!
+  [notes consulted: none | 24.0 s]
+
+you> Give me a 3-step plan for studying for a networks exam.
+
+buddy> That sounds like something I can help with! Here is a suggested 3-step plan for studying for a networks exam:
+
+1.  **Review Core Concepts:** Start by going over all the foundational topics. Focus on understanding the 'why' behind the protocols (like TCP/IP, OSI model, routing, switching).
+2.  **Practice with Labs/Problems:** Don't just read. Work through practice problems, run simulations, or set up small lab environments to see the concepts in action. This is where the real learning happens.
+3.  **Create Review Material:** Make flashcards or summary sheets for key definitions, command syntax, and complex processes. Test yourself repeatedly with this material.
+
+How does that sound? We can tweak this plan if you want to focus more on a specific area, like routing or security.
+  [notes consulted: none | 26.4 s]
+
+you> make that shorter
+
+buddy> Okay, let's make that shorter.
+
+Here is a condensed 3-step plan for studying for your networks exam:
+
+1.  **Review Basics:** Master core concepts like OSI, TCP/IP, and fundamental protocols.
+2.  **Practice:** Work through hands-on labs or practice problems.
+3.  **Review & Test:** Create summary notes and actively test yourself with flashcards.
+
+That should be easier to keep track of. Ready to dive into Step 1?
+  [notes consulted: none | 16.0 s]
+
+you> For this chat, my cat is named Pixel.
+
+buddy> That's a nice piece of personal information. I've noted that your cat's name is Pixel. I'll remember that for our conversation.
+
+What else can I help you with today?
+  [notes consulted: none | 7.4 s]
+
+you> /quit
+  -> saved evidence\offline\09-chat.txt  (exit code 0, 104.5 s)
+PS>TerminatingError(Invoke-WebRequest): "The remote name could not be resolved: 'www.msftconnecttest.com'"
+
+==========================================================================
+  Step 10 of 10 - Ask vs chat (fact stated only in chat)  (expected: about 15 s)
+==========================================================================
+  > python wiki.py ask What is the name of my cat? --label offline-ask-vs-chat
+  working... (the model may be silent for 20-60 s at a time; this is normal)
+[mode: ask | execution: local | model: gemma4:e2b]
+
+Retrieved: [1] vault/raw/obsidian-vault-practices.md § Note names
+
+Answer:
+INSUFFICIENT EVIDENCE: the sources do not contain information about the name of the cat.
+
+Citations: cited=[] invalid=[] ok=True  (14.2 s)
+  -> saved evidence\offline\10-ask-vs-chat.txt  (exit code 0, 14.8 s)
+PS>TerminatingError(Invoke-WebRequest): "The remote name could not be resolved: 'www.msftconnecttest.com'"
+PS>TerminatingError(Invoke-WebRequest): "The remote name could not be resolved: 'www.msftconnecttest.com'"
+
+Step                                        File                Exit Seconds
+----                                        ----                ---- -------
+Help                                        01-help.txt            0     0.5
+Ingest 3 sources with local Gemma           02-ingest-model.txt    0     153
+Re-ingest real vault (expect no duplicates) 03-reingest.txt        0     0.5
+Ask test 1 (direct)                         04-ask-test1.txt       0    22.8
+Ask test 2 (paraphrase)                     05-ask-test2.txt       0    23.5
+Ask test 3 (two facts)                      06-ask-test3.txt       0    29.3
+Ask test 4 (unsupported)                    07-ask-test4.txt       0    21.8
+Search check (no model)                     08-search.txt          0     0.5
+Chat check                                  09-chat.txt            0   104.5
+Ask vs chat (fact stated only in chat)      10-ask-vs-chat.txt     0    14.8
+Network - online before: False, online after: False
+
+==========================================================================
+  ALL DONE. Summary: evidence\offline\SUMMARY.md
+==========================================================================
+**********************
+Windows PowerShell transcript end
+End time: 20260929170043
+**********************

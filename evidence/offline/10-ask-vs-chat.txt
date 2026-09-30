@@ -1,0 +1,11 @@
+﻿# command: python wiki.py ask What is the name of my cat? --label offline-ask-vs-chat
+# finished: 2026-09-29T17:00:35  exit code: 0  wall time: 14.8 s
+
+[mode: ask | execution: local | model: gemma4:e2b]
+
+Retrieved: [1] vault/raw/obsidian-vault-practices.md § Note names
+
+Answer:
+INSUFFICIENT EVIDENCE: the sources do not contain information about the name of the cat.
+
+Citations: cited=[] invalid=[] ok=True  (14.2 s)

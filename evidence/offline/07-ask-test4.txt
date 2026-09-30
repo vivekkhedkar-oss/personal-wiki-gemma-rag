@@ -1,0 +1,11 @@
+﻿# command: python wiki.py ask What does the hosted Gemma API cost per million tokens? --label offline-test4
+# finished: 2026-09-29T16:58:24  exit code: 0  wall time: 21.8 s
+
+[mode: ask | execution: local | model: gemma4:e2b]
+
+Retrieved: [1] vault/raw/running-gemma-locally.md § Model sizes, [2] vault/raw/running-gemma-locally.md § Running Gemma Locally, [3] vault/raw/running-gemma-locally.md § My laptop
+
+Answer:
+INSUFFICIENT EVIDENCE: the sources do not state the cost per million tokens for the hosted Gemma API.
+
+Citations: cited=[] invalid=[] ok=True  (21.3 s)

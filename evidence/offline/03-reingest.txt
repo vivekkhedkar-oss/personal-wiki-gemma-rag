@@ -1,0 +1,8 @@
+﻿# command: python wiki.py ingest
+# finished: 2026-09-29T16:56:31  exit code: 0  wall time: 0.5 s
+
+[mode: ingest | execution: local | model: gemma4:e2b]
+  unchanged  vault/raw/obsidian-vault-practices.md -> vault/wiki/Practices/Obsidian Vault Practices.md (kept, no model call)
+  unchanged  vault/raw/rag-notes.md -> vault/wiki/Concepts/Retrieval Augmented Generation.md (kept, no model call)
+  unchanged  vault/raw/running-gemma-locally.md -> vault/wiki/Tools/Running Gemma Locally.md (kept, no model call)
+  retrieval index rebuilt: 17 passages. total 0.0 s

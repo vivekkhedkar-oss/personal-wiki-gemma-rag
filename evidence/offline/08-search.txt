@@ -1,0 +1,16 @@
+﻿# command: python wiki.py search Obsidian graph filter
+# finished: 2026-09-29T16:58:28  exit code: 0  wall time: 0.5 s
+
+[mode: search | execution: local | no model used]
+
+[1] vault/raw/obsidian-vault-practices.md  (section: Graph view; score 5.964; matched: filter, graph)
+    To see only curated notes, filter the graph with the path filter wiki/ and turn off the Attachments toggle. Zoom in until the labels are readable.
+
+[2] vault/raw/obsidian-vault-practices.md  (section: Obsidian Vault Practices; score 2.761; matched: obsidian)
+    *Sample source written for this assignment.*
+
+[3] vault/raw/obsidian-vault-practices.md  (section: Vault layout; score 1.908; matched: obsidian)
+    Open the vault folder itself in Obsidian, not the whole code repository. Keep untouched originals in raw/, reviewed notes in wiki/, and a human landing page called index.md at the vault root.
+
+[4] vault/raw/obsidian-vault-practices.md  (section: Note names; score 1.583; matched: graph)
+    Name notes for their subject in two to six words, such as Retrieval Augmented Generation. Never use hashes, timestamps, or full sentences as filenames, because the filename is the label shown in the graph view.

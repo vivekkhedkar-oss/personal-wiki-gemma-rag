@@ -1,0 +1,26 @@
+﻿# command: python wiki.py --help
+# finished: 2026-09-29T16:53:49  exit code: 0  wall time: 0.5 s
+
+usage: wiki [-h] [--model MODEL] [--mode {local}] {ingest,search,ask,chat} ...
+
+wiki: personal wiki CLI. Modes: chat (assistant), ask (grounded answer), search (raw passages), ingest.
+
+positional arguments:
+  {ingest,search,ask,chat}
+    ingest              raw sources -> wiki pages + index
+    search              show original passages, no generated answer
+    ask                 standalone grounded answer with citations
+    chat                personal assistant
+
+options:
+  -h, --help            show this help message and exit
+  --model MODEL         local Ollama model tag
+  --mode {local}        execution setting (local only)
+
+examples:
+  python wiki.py ingest                      read vault/raw, generate wiki pages, rebuild index
+  python wiki.py search "workshop location"  show original passages (no model needed)
+  python wiki.py ask "Where is the workshop?"  standalone cited answer from local Gemma
+  python wiki.py chat                        assistant with conversation memory (/help inside)
+configuration: --model (default gemma4:e2b via local Ollama), --mode local (default; only local is implemented).
+inputs: original sources (.md/.txt/.pdf) in vault/raw/. Ollama must be running for ingest/ask/chat.

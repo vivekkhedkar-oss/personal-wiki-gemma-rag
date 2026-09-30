@@ -1,0 +1,12 @@
+﻿checked at: 2026-09-29T16:53:39
+HTTP GET http://www.msftconnecttest.com/connecttest.txt succeeded: False
+ping 8.8.8.8 succeeded: False
+=> online: False
+
+
+Name  InterfaceDescription                           Status      
+----  --------------------                           ------      
+Wi-Fi Realtek RTL8852BE WiFi 6 802.11ax PCIe Adapter Disconnected
+
+
+

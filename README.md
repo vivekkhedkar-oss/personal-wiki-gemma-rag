@@ -35,6 +35,7 @@ python wiki.py chat
 ```
 **Why E2B:** the machine has no GPU and 16 GB RAM; E2B is the smallest size and answered all tests correctly (I did not test E4B/26B; 26B would not fit and E4B would leave little memory for the OS). Measured: `ollama ps` shows 6.7 GB loaded, 100% CPU. Ingesting 3 sources took **124 s** in
 total (37–47 s per source, includes ~20 s first model load); ask answers took **13–23 s**; chat replies 6–31 s. Re-ingest with no changes: 0.1 s.
+In the offline run: ingestion **153 s**, ask answers **14–29 s**, 6.7 GB loaded, about 1.5 GB of system RAM left free.
 
 ## Architecture
 - **Model:** Gemma via Ollama at `127.0.0.1:11434` ([llm.py](wikicli/llm.py)). It only sees what the harness puts in the prompt.
@@ -70,8 +71,28 @@ The first set of cards above was produced online during development (Ollama stil
 [`RUN-OFFLINE-DEMO.bat`](RUN-OFFLINE-DEMO.bat) runs [scripts/offline-demo.ps1](scripts/offline-demo.ps1). The script waits
 until both a web request and a ping fail, restarts Ollama, then runs help, a real model ingestion (on a scratch copy so
 reviewed pages are not overwritten), a re-ingest of the real vault, the four ask tests, search, chat and the ask-vs-chat
-check, each as a fresh CLI process. Results: **[evidence/offline/SUMMARY.md](evidence/offline/SUMMARY.md)** (network
-check, device, per-step output, timings, memory, transcript, screenshot).
+check, each as a fresh CLI process. It re-checks the network after every step and aborts if it comes back.
+Results: **[evidence/offline/SUMMARY.md](evidence/offline/SUMMARY.md)** (network check, device, per-step output,
+timings, memory, full [transcript](evidence/offline/transcript.txt)).
+
+Offline run on 2026-09-29, Wi-Fi adapter `Disconnected`, web check and ping failed before, during and after
+([network-check.txt](evidence/offline/network-check.txt)). All 10 steps exited 0:
+
+| Offline check | Evidence | Result |
+|---|---|---|
+| Ingestion with Gemma | [02-ingest-model.txt](evidence/offline/02-ingest-model.txt), [pages](evidence/offline/ingest-generated-pages) | 3 sources -> 3 pages in 153 s |
+| Re-ingest | [03-reingest.txt](evidence/offline/03-reingest.txt) | all unchanged, still 3 pages |
+| Ask test 1 | [card](evidence/ask/offline-test1.md) | "E4B needs roughly 4.5 GB to load at Q4_0 quantization [1]" |
+| Ask test 2 | [card](evidence/ask/offline-test2.md) | no discrete VRAM, CPU only, so E2B via Ollama [1] |
+| Ask test 3 | [card](evidence/ask/offline-test3.md) | `wiki/` path filter + Attachments off [1]; 2–6 word subject names [2] |
+| Ask test 4 (unsupported) | [card](evidence/ask/offline-test4.md) | "INSUFFICIENT EVIDENCE: the sources do not state the cost per million tokens for the hosted Gemma API." |
+| Search | [08-search.txt](evidence/offline/08-search.txt) | original passages + paths, no generated answer |
+| Chat | [09-chat.txt](evidence/offline/09-chat.txt) | capability questions answered, no notes lookup; plan then "make that shorter" used the conversation |
+| Ask vs chat | [card](evidence/ask/offline-ask-vs-chat.md) | cat name stated only in chat -> INSUFFICIENT EVIDENCE |
+
+The cited passages were checked against `vault/raw/` and support each claim. Ask answers took 14–29 s offline.
+
+![offline terminal](evidence/offline/offline-terminal.png)
 
 ### Obsidian (vault opened at `vault/`)
 Graph filter used: `path:wiki/`, Attachments off, color groups by folder (saved in `vault/.obsidian/graph.json`).

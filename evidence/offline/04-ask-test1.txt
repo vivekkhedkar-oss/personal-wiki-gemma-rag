@@ -1,0 +1,11 @@
+﻿# command: python wiki.py ask How much memory does the E4B Gemma model need to load at Q4_0? --label offline-test1
+# finished: 2026-09-29T16:56:58  exit code: 0  wall time: 22.8 s
+
+[mode: ask | execution: local | model: gemma4:e2b]
+
+Retrieved: [1] vault/raw/running-gemma-locally.md § Model sizes, [2] vault/raw/running-gemma-locally.md § Speed expectations, [3] vault/raw/running-gemma-locally.md § Quantization
+
+Answer:
+E4B needs roughly 4.5 GB to load at Q4_0 quantization [1].
+
+Citations: cited=[1] invalid=[] ok=True  (22.3 s)

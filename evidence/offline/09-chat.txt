@@ -1,0 +1,66 @@
+﻿# command: python wiki.py chat
+# finished: 2026-09-29T17:00:16  exit code: 0  wall time: 104.5 s
+
+[mode: chat | execution: local | model: gemma4:e2b]
+Wiki Buddy here. Commands: /help  /save (save last reply as a draft in memory/)  /quit. Otherwise just talk.
+
+you> what can we do?
+
+buddy> Hey there! I'm Wiki Buddy. I can help you brainstorm, draft, plan, and work through ideas. I can also look up notes you've saved in your personal wiki when you need them.
+
+Just tell me what's on your mind. For example, you can ask me to:
+
+*   Brainstorm some ideas for a project.
+*   Draft an email or a short story.
+*   Plan out a schedule.
+
+Or you can type `/help` if you want to see a list of commands. What would you like to start with?
+  [notes consulted: none | 30.2 s]
+
+you> what can you help me with?
+
+buddy> I can help you with a few things. I can brainstorm, draft, plan, and work through ideas. I can also look up passages from your personal notes if you've saved anything.
+
+Think of me as your personal thinking partner.
+
+To get started, you could ask me to:
+
+1.  **Brainstorm:** Come up with ideas for anything.
+2.  **Draft:** Help you write things, like emails or outlines.
+3.  **Plan:** Help you organize steps or schedules.
+
+Just give me a topic or a task, and we can get started!
+  [notes consulted: none | 24.0 s]
+
+you> Give me a 3-step plan for studying for a networks exam.
+
+buddy> That sounds like something I can help with! Here is a suggested 3-step plan for studying for a networks exam:
+
+1.  **Review Core Concepts:** Start by going over all the foundational topics. Focus on understanding the 'why' behind the protocols (like TCP/IP, OSI model, routing, switching).
+2.  **Practice with Labs/Problems:** Don't just read. Work through practice problems, run simulations, or set up small lab environments to see the concepts in action. This is where the real learning happens.
+3.  **Create Review Material:** Make flashcards or summary sheets for key definitions, command syntax, and complex processes. Test yourself repeatedly with this material.
+
+How does that sound? We can tweak this plan if you want to focus more on a specific area, like routing or security.
+  [notes consulted: none | 26.4 s]
+
+you> make that shorter
+
+buddy> Okay, let's make that shorter.
+
+Here is a condensed 3-step plan for studying for your networks exam:
+
+1.  **Review Basics:** Master core concepts like OSI, TCP/IP, and fundamental protocols.
+2.  **Practice:** Work through hands-on labs or practice problems.
+3.  **Review & Test:** Create summary notes and actively test yourself with flashcards.
+
+That should be easier to keep track of. Ready to dive into Step 1?
+  [notes consulted: none | 16.0 s]
+
+you> For this chat, my cat is named Pixel.
+
+buddy> That's a nice piece of personal information. I've noted that your cat's name is Pixel. I'll remember that for our conversation.
+
+What else can I help you with today?
+  [notes consulted: none | 7.4 s]
+
+you> /quit

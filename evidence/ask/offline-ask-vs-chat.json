@@ -1,0 +1,28 @@
+{
+  "mode": "ask",
+  "execution": "local",
+  "model": "gemma4:e2b",
+  "time": "2026-09-29T17:00:35",
+  "question": "What is the name of my cat?",
+  "retrieved": [
+    {
+      "id": "obsidian-vault-practices#2",
+      "source": "vault/raw/obsidian-vault-practices.md",
+      "section": "Note names",
+      "text": "Name notes for their subject in two to six words, such as Retrieval Augmented Generation. Never use hashes, timestamps, or full sentences as filenames, because the filename is the label shown in the graph view.",
+      "score": 2.402,
+      "matched": [
+        "name"
+      ],
+      "coverage": 0.5
+    }
+  ],
+  "answer": "INSUFFICIENT EVIDENCE: the sources do not contain information about the name of the cat.",
+  "citation_check": {
+    "cited": [],
+    "invalid": [],
+    "insufficient": true,
+    "ok": true
+  },
+  "seconds": 14.2
+}
