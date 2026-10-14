@@ -1,7 +1,19 @@
-# Personal Wiki CLI with Local Gemma + RAG (Assignment 4)
+# Personal Wiki with Local Gemma + RAG
 
-A command-line personal wiki: my own harness around a local Gemma model (via Ollama) and my own BM25 retrieval.
-Modes: `chat` (assistant), `ask` (grounded, cited answers), `search` (raw passages, no model), plus `ingest` and `--help`.
+A command-line personal knowledge base that runs **fully offline**. A local Gemma model (via Ollama) turns raw notes into linked Obsidian wiki pages. Then it answers questions about them with **cited, verified sources**, using a retrieval pipeline I wrote from scratch on the Python standard library.
+
+![Offline run in the terminal](evidence/offline/offline-terminal.png)
+
+**Highlights**
+- **Built from scratch:** hand-written BM25 search engine (chunking, light stemming, ranking) and RAG harness, with no LangChain, no vector-DB service and no required `pip install`
+- **Grounded answers:** `ask` mode cites numbered sources and the harness checks that every `[n]` citation maps to a passage that was actually retrieved. If the notes don't contain the answer, it replies `INSUFFICIENT EVIDENCE` instead of guessing.
+- **Four modes:** `ingest` (notes become wiki pages, with change detection via sha256), `ask` (cited answers), `search` (raw passages, no model) and `chat` (conversational, with retrieval only when relevant)
+- **Proven offline:** a scripted demo disconnects the network, runs all 10 steps and aborts if connectivity returns. Logs and timings are committed under [`evidence/`](evidence/offline/SUMMARY.md).
+- **Runs on a laptop:** CPU-only on 16 GB RAM, with answers in about 14–29 s
+
+**Stack:** Python 3 (standard library) · Ollama · Gemma (`gemma4:e2b`, Q4_K_M) · BM25 · Obsidian
+
+> *Project context:* built as a course project on running LLMs locally. The design, retrieval code, harness and evaluation are my own.
 
 ## Purpose and sources
 The wiki answers questions about running Gemma locally, RAG basics, and Obsidian vault practice. The three sources in
